@@ -1,0 +1,28 @@
+0, 2, False
+
+foo(bar)
+
+foo(
+  bar
+)
+
+0, 3, False
+
+foo(a, b, c)
+
+foo(
+   a,
+   b,
+   c
+)
+
+0, 2, False
+
+foo(a, cat(meow), bells)
+
+foo(
+  a,
+  cat(meow),
+  bells
+)
+
