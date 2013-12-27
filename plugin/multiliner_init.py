@@ -16,6 +16,10 @@ def Multiliner_multiline():
 
     result = multiliner.multiline(cur_line, cur_col, ts)
 
+    # if we couldn't break line starting from cur_col, try using 0 instead
+    if len(result) == 1:
+        result = multiliner.multiline(cur_line, 0, ts)
+
     del(cb[cur_row - 1])
 
     for line in reversed(result):
