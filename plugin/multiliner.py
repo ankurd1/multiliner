@@ -69,5 +69,34 @@ def _parse(txt, start):
         return (-1, -1, [])
     return (outermost_paren_start, outermost_paren_end, commas)
 
-def unmultiline(lines, cur_col):
-    pass
+def unmultiline(inp):
+    if (len(inp) == 1):
+        return inp
+
+    lines = '\n'.join(inp)
+    start, end, commas = _parse(lines, 0)
+
+    if len(inp[0]) <= start:
+        # No opening paren in the first line
+        return inp
+
+    line0 = inp[0]
+    char_index = len(line0) + 1
+    line_index = 1
+
+    for line in inp[1:]:
+        if (end < char_index):
+            break
+        else:
+            line0 = line0 + line.strip()
+            if (char_index + len(line) - 1) in commas:
+                # last char of line is a comma, add a space
+                line0 += ' '
+            line_index += 1
+        char_index += len(line) + 1
+
+    result = [line0]
+    if line_index < len(inp):
+        result += inp[line_index:]
+
+    return result

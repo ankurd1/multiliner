@@ -7,6 +7,7 @@ sys.path.append(plugin_path)
 
 import multiliner
 
+
 def Multiliner_multiline():
     cb = vim.current.buffer
     cw = vim.current.window
@@ -26,4 +27,16 @@ def Multiliner_multiline():
         cb.append(line, cur_row - 1)
 
 def Multiliner_unmultiline():
-    pass
+    cb = vim.current.buffer
+    cw = vim.current.window
+    cur_row, cur_col = cw.cursor
+    ts = cb.options['tabstop']
+
+    # we try to unmultiline the next 10 lines
+    last_line_index = min(cur_row + 10, len(cb))
+    result = multiliner.unmultiline(cb[cur_row - 1: last_line_index])
+
+    del(cb[cur_row - 1:last_line_index])
+
+    for line in reversed(result):
+        cb.append(line, cur_row - 1)

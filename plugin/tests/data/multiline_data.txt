@@ -26,3 +26,12 @@ foo(
   bells
 )
 
+4, 2, False
+
+foo(a, cat(b, meow))
+
+foo(a, cat(
+  b,
+  meow
+))
+

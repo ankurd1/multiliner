@@ -1,0 +1,37 @@
+0
+
+foo(
+  a
+)
+
+foo(a)
+
+0
+
+foo(
+  a,
+  b
+)
+
+foo(a, b)
+
+0
+
+foo(
+  cat(a, b),
+  c
+)
+
+foo(cat(a, b), c)
+
+0
+
+foo bar(
+  meow,
+  bells,
+  cat(1,2),
+  1
+)
+
+foo bar(meow, bells, cat(1,2), 1)
+
